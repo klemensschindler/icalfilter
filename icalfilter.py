@@ -39,7 +39,7 @@ def main():
                 return start_date >= utc.localize(datetime.datetime(YEAR, 1, 1))
 
             if type(start_date) == datetime.date:
-                return start_date >= datetime.date(2019, 1, 1)
+                return start_date >= datetime.date(YEAR, 1, 1)
 
             raise Exception('ARGH')
 
