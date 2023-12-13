@@ -48,10 +48,16 @@ def main():
             if item.name == 'VEVENT':
                 start_date = item['dtstart'].dt
                 if active_event(item):
-                    print ('INCLUDE', item['summary'], repr(start_date))
+                    if 'summary' in item:
+                        print ('INCLUDE', item['summary'], repr(start_date))
+                    else:
+                        print ('INCLUDE', '(no title)', repr(start_date))
                     outcal.add_component(item)
                 else:
-                    print ('EXCLUDE', item['summary'], repr(start_date))
+                    if 'summary' in item:
+                        print ('EXCLUDE', item['summary'], repr(start_date))
+                    else:
+                        print ('EXCLUDE', '(no title)', repr(start_date))
                     pass
             else:
                 outcal.add_component(item)
